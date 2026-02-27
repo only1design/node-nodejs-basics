@@ -7,7 +7,9 @@ const filePath = path.join(__dirname, 'files', 'fileToRead.txt');
 
 const read = async () => {
   try {
-    console.log(fs.readFileSync(filePath).toString());
+    const fileContent = await fs.promises.readFile(filePath);
+
+    console.log(fileContent.toString());
   } catch (err) {
     throw new Error('FS operation failed');
   }

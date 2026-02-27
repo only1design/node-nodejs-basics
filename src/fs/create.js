@@ -7,7 +7,7 @@ const filePath = path.join(__dirname, 'files', 'fresh.txt');
 
 const create = async () => {
   try {
-    fs.writeFileSync(filePath, 'I am fresh and young', {flag: 'wx'});
+    await fs.promises.writeFile(filePath, 'I am fresh and young', {flag: 'wx'});
   } catch (err) {
     throw new Error('FS operation failed');
   }

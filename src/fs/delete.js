@@ -7,7 +7,7 @@ const filePath = path.join(__dirname, 'files', 'fileToRemove.txt');
 
 const remove = async () => {
   try {
-    fs.rmSync(filePath);
+    await fs.promises.rm(filePath);
   } catch (error) {
     throw new Error('FS operation failed');
   }

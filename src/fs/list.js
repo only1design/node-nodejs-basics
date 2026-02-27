@@ -7,7 +7,9 @@ const folderPath = path.join(__dirname, 'files');
 
 const list = async () => {
   try {
-    console.log(fs.readdirSync(folderPath))
+    const files = await fs.promises.readdir(folderPath);
+
+    console.log(files)
   } catch (err) {
     throw new Error('FS operation failed');
   }

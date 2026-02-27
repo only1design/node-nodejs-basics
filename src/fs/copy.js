@@ -8,7 +8,7 @@ const destPath = path.join(__dirname, 'files_copy');
 
 const copy = async () => {
   try {
-    fs.cpSync(srcPath, destPath, {recursive: true, errorOnExist: true, force: false});
+    await fs.promises.cp(srcPath, destPath, {recursive: true, errorOnExist: true, force: false});
   } catch (err) {
     throw new Error('FS operation failed');
   }
