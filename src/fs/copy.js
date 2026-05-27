@@ -1,5 +1,17 @@
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import fs from "node:fs";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const srcPath = path.join(__dirname, 'files');
+const destPath = path.join(__dirname, 'files_copy');
+
 const copy = async () => {
-  // Write your code here
+  try {
+    await fs.promises.cp(srcPath, destPath, {recursive: true, errorOnExist: true, force: false});
+  } catch (err) {
+    throw new Error('FS operation failed');
+  }
 };
 
 await copy();
